@@ -1,7 +1,7 @@
 const { Client, GatewayIntentBits, Partials, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, EmbedBuilder } = require("discord.js");
 
 // ---------------- CONFIG ----------------
-const TOKEN = "MTIxNjI0MDkxOTQzOTg3MjAzMA.G5tl0C.tlPSKuiFnAD9ngejgENXSv8OYxo3z4z9LWqaoQ";
+const TOKEN = process.env.TOKEN;
 const STAFF_CHANNEL_ID = "1465568835607462041";
 const STAFF_ROLE_ID = "1235394165857325111";
 const DIRECTIVE_ROLE_ID = "1235394165903462442";
@@ -148,3 +148,4 @@ client.on(Events.MessageCreate, async (message) => {
 });
 
 client.login(TOKEN);
+
