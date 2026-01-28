@@ -21,9 +21,9 @@ const client = new Client({
 });
 
 // ===== CONFIG =====
-const STAFF_CHANNEL_ID = "YOUR_STAFF_CHANNEL_ID";
-const STAFF_ROLE_ID = "YOUR_STAFF_ROLE_ID";
-const DIRECTIVE_ROLE_ID = "YOUR_DIRECTIVE_ROLE_ID";
+const STAFF_CHANNEL_ID = "1465568835607462041";
+const STAFF_ROLE_ID = "1235394165857325111";
+const DIRECTIVE_ROLE_ID = "1235394165903462442";
 
 let applicationsOpen = true;
 
@@ -143,4 +143,5 @@ client.on(Events.MessageCreate, async message => {
 });
 
 client.login(process.env.TOKEN);
+
 
