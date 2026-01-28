@@ -1,35 +1,29 @@
-// deploy-commands.js
 const { REST, Routes, SlashCommandBuilder } = require("discord.js");
-
-// ---------------- PLACEHOLDERS ----------------
-const TOKEN = "MTIxNjI0MDkxOTQzOTg3MjAzMA.G5tl0C.tlPSKuiFnAD9ngejgENXSv8OYxo3z4z9LWqaoQ";       // Bot token from Developer Portal → Bot
-const CLIENT_ID = "1216240919439872030";   // Application (bot) ID
-const GUILD_ID = "1235394165597274153";     // Your server ID
-// ----------------------------------------------
+require("dotenv").config();
 
 const commands = [
   new SlashCommandBuilder()
     .setName("apply")
-    .setDescription("Start your staff application"),
+    .setDescription("Apply for staff"),
 
   new SlashCommandBuilder()
     .setName("toggleapps")
-    .setDescription("Open or close staff applications (staff only)")
-].map(command => command.toJSON());
+    .setDescription("Open or close staff applications")
+].map(cmd => cmd.toJSON());
 
-const rest = new REST({ version: "10" }).setToken(TOKEN);
+const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 
 (async () => {
   try {
-    console.log("⏳ Started refreshing application commands...");
+    console.log("⏳ Registering commands...");
 
     await rest.put(
-      Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
+      Routes.applicationCommands("YOUR_BOT_CLIENT_ID"),
       { body: commands }
     );
 
-    console.log("✅ Successfully reloaded application commands.");
-  } catch (error) {
-    console.error(error);
+    console.log("✅ Commands registered successfully.");
+  } catch (err) {
+    console.error(err);
   }
 })();
