@@ -21,9 +21,9 @@ const client = new Client({
 });
 
 // ===== CONFIG =====
-const STAFF_CHANNEL_ID = "YOUR_STAFF_CHANNEL_ID";       // Where applications are sent
-const STAFF_ROLE_ID = "YOUR_STAFF_ROLE_ID";           // Role to give on acceptance
-const DIRECTIVE_ROLE_ID = "YOUR_DIRECTIVE_ROLE_ID";   // Role allowed to toggle apps
+const STAFF_CHANNEL_ID = "1465568835607462041";       // Where applications are sent
+const STAFF_ROLE_ID = "1235394165857325111";           // Role to give on acceptance
+const DIRECTIVE_ROLE_ID = "1235394165903462442";   // Role allowed to toggle apps
 let applicationsOpen = true;
 
 // ===== QUESTIONS =====
@@ -162,3 +162,4 @@ client.on(Events.MessageCreate, async message => {
 
 // ===== LOGIN =====
 client.login(process.env.TOKEN);
+
