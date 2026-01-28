@@ -18,7 +18,7 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
     console.log("⏳ Registering commands...");
 
     await rest.put(
-      Routes.applicationCommands("YOUR_BOT_CLIENT_ID"),
+      Routes.applicationCommands("1216240919439872030"),
       { body: commands }
     );
 
@@ -27,3 +27,4 @@ const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
     console.error(err);
   }
 })();
+
