@@ -1,30 +1,27 @@
-const { REST, Routes, SlashCommandBuilder } = require("discord.js");
-require("dotenv").config();
+require('dotenv').config();
+const { REST, Routes, SlashCommandBuilder } = require('discord.js');
 
 const commands = [
   new SlashCommandBuilder()
-    .setName("apply")
-    .setDescription("Apply for staff"),
+    .setName('apply')
+    .setDescription('Apply for staff')
+    .toJSON()
+];
 
-  new SlashCommandBuilder()
-    .setName("toggleapps")
-    .setDescription("Open or close staff applications")
-].map(cmd => cmd.toJSON());
-
-const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 (async () => {
   try {
-    console.log("⏳ Registering commands...");
-
+    console.log('⏳ Deploying commands...');
     await rest.put(
-      Routes.applicationCommands("1216240919439872030"),
+      Routes.applicationGuildCommands(
+        process.env.CLIENT_ID,
+        process.env.GUILD_ID
+      ),
       { body: commands }
     );
-
-    console.log("✅ Commands registered successfully.");
-  } catch (err) {
-    console.error(err);
+    console.log('✅ Commands deployed');
+  } catch (error) {
+    console.error(error);
   }
 })();
-
